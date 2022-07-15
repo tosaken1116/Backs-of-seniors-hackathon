@@ -9,8 +9,8 @@ export default function Footer(){
                 <a className=" border border-black rounded px-6 mx-auto" href='/InputCalorie'>
                     食事を記録
                 </a>
-                <a className=" border border-black rounded px-6 mx-auto" href='/'>
-                    test
+                <a className=" border border-black rounded px-6 mx-auto" href='/ranking'>
+                    ランキング
                 </a>
                 <a className=" border border-black rounded px-6 mx-auto" href='/calorieOfThisMonth'>
                     カロ草

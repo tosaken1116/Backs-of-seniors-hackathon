@@ -112,6 +112,7 @@ export default function CalorieOfThisMonth() {
                 <div className="  grid grid-cols-7 grid-rows-5 w-72 mt-12 mx-auto">
                     {testKUSAdata.map((calorieOfDay, index) => (
                         <CalorieOfKUSA
+                            key={index}
                             calorieOfDay={calorieOfDay.calorie}
                             calorieAverage={calorieAverage}
                             date={calorieOfDay.date}

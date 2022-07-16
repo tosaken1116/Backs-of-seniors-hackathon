@@ -24,7 +24,7 @@ const customStyles = {
 
 Modal.setAppElement("#__next");
 
-const App = () => {
+export default function App() {
     const [modalIsopen, setIsOpen] = useState(false);
 
     const openModal = () => {
@@ -46,4 +46,4 @@ const App = () => {
             />
         </div>
     );
-};
+}

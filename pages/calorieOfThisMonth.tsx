@@ -4,9 +4,54 @@ import Header from "./components/Header";
 
 export default function CalorieOfThisMonth() {
     const testKUSAdata = [
-        -1, 0, 0, 0, 200, 100, 300, 400, 55, 600.5, 400, 200, 200, 100, 300,
-        400, 55, 600, 400, 200, 0, 100, 300, 400, 0, 0, 0, 600, 0, 200, 200,
-        100, 300, 400, 55, 600.5,
+        {
+            date: 1,
+            calorie: 100,
+        },
+        {
+            date: 2,
+            calorie: 100,
+        },
+        {
+            date: 3,
+            calorie: 100,
+        },
+        {
+            date: 4,
+            calorie: 100,
+        },
+        {
+            date: 5,
+            calorie: 100,
+        },
+        {
+            date: 6,
+            calorie: 100,
+        },
+        {
+            date: 7,
+            calorie: 100,
+        },
+        {
+            date: 8,
+            calorie: 100,
+        },
+        {
+            date: 9,
+            calorie: 100,
+        },
+        {
+            date: 10,
+            calorie: 100,
+        },
+        {
+            date: 11,
+            calorie: 100,
+        },
+        {
+            date: 12,
+            calorie: 100,
+        },
     ];
     const calorieAverage = 100;
     const calorieSum = 20000;
@@ -18,15 +63,15 @@ export default function CalorieOfThisMonth() {
         }
 
         caloriteTextString +=
-            data == -1
+            data.date == -1
                 ? "      "
-                : data == 0
+                : data.date == 0
                 ? "⬜️"
-                : data > calorieAverage + calorieAverage / 3
+                : data.date > calorieAverage + calorieAverage / 3
                 ? "🟥"
-                : data > calorieAverage
+                : data.date > calorieAverage
                 ? "🟧"
-                : data > calorieAverage - calorieAverage / 3
+                : data.date > calorieAverage - calorieAverage / 3
                 ? "🟨"
                 : "🟩";
     });
@@ -67,9 +112,9 @@ export default function CalorieOfThisMonth() {
                 <div className="  grid grid-cols-7 grid-rows-5 w-72 mt-12 mx-auto">
                     {testKUSAdata.map((calorieOfDay, index) => (
                         <CalorieOfKUSA
-                            calorieOfDay={calorieOfDay}
+                            calorieOfDay={calorieOfDay.calorie}
                             calorieAverage={calorieAverage}
-                            date={index}
+                            date={calorieOfDay.date}
                         ></CalorieOfKUSA>
                     ))}
                 </div>
@@ -80,7 +125,7 @@ export default function CalorieOfThisMonth() {
                         <a
                             href={tweetText}
                             className="twitter-share-button"
-                            rel="nofollow noopener"
+                            rel="nofollow noopener noreferrer"
                             target="_blank"
                         >
                             Tweet

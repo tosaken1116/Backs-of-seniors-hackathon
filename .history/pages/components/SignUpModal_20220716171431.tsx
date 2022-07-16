@@ -1,3 +1,4 @@
+import { off } from "process";
 import { useState } from "react";
 export default function SignInModal() {
     type loginElement = {
@@ -5,18 +6,12 @@ export default function SignInModal() {
         email: string;
         password: string;
     };
-    type register = {
-        registeredemail: string;
-        registeredpassword: string;
-    };
-
     let initialValues = { username: "", email: "", password: "" };
     const [formValues, setFormValues] = useState<loginElement>(initialValues);
     const [formErrors, setFormErrors] = useState<loginElement>(initialValues);
-    // const [isSubmit, setIsSubmit] = useState(false);
 
     const handleChange = (event) => {
-        console.log(event.target);
+        // console.log(event.target.value);
         const { name, value } = event.target;
         setFormValues({ ...formValues, [name]: value });
     };
@@ -25,14 +20,11 @@ export default function SignInModal() {
         event.preventDefault();
         //ログイン情報の送信
         //バリデーションチェック
-        {
-            /*setFormErrors(validate(formValues));
-        console.log(formErrors);*/
-        }
-        // setIsSubmit(true);
+        setFormErrors(validate(formValues));
+        console.log(formErrors);
     };
 
-    /*const validate = (values) => {
+    const validate = (values) => {
         const errors: loginElement = initialValues;
         if (!values.username) {
             errors.username = "ユーザー名を入力してください";
@@ -52,7 +44,6 @@ export default function SignInModal() {
         // console.log(errors);
         return errors;
     };
-    };*/
 
     return (
         <div className="formcontainer">
@@ -71,7 +62,7 @@ export default function SignInModal() {
                         />
                         {/* <div>{formErrors.username}</div> */}
                     </div>
-                    {/* <p className="errormsg">{formErrors.username}</p> */}
+                    <p className="errormsg">{formErrors.username}</p>
                     <div className="formField">
                         <label>メールアドレス</label>
                         <input
@@ -83,7 +74,7 @@ export default function SignInModal() {
                         />
                         {/* <div>{formErrors.email}</div> */}
                     </div>
-                    {/* <p className="errormsg">{formErrors.email}</p> */}
+                    <p className="errormsg">{formErrors.email}</p>
                     <div className="formField">
                         <label>パスワード</label>
                         <input
@@ -95,11 +86,11 @@ export default function SignInModal() {
                         />
                     </div>
                     {/* <div>{formErrors.password}</div> */}
-                    {/* <p className="errormsg">{formErrors.password}</p> */}
+                    <p className="errormsg">{formErrors.password}</p>
+
                     <button className="SubmitButton" type="submit">
                         サインアップ
                     </button>
-                    {/* {Object.keys isSubmit && ( <div>サインアップ完了</div>)}*/}
                 </div>
             </form>
         </div>

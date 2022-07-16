@@ -16,7 +16,7 @@ export default function SignInModal() {
     // const [isSubmit, setIsSubmit] = useState(false);
 
     const handleChange = (event) => {
-        console.log(event.target);
+        // console.log(event.target.value);
         const { name, value } = event.target;
         setFormValues({ ...formValues, [name]: value });
     };
@@ -29,7 +29,7 @@ export default function SignInModal() {
             /*setFormErrors(validate(formValues));
         console.log(formErrors);*/
         }
-        // setIsSubmit(true);
+        setIsSubmit(true);
     };
 
     /*const validate = (values) => {

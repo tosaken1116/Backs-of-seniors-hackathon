@@ -1,14 +1,6 @@
-import { useState } from "react";
 export default function SignInModal() {
-    type loginElement = {
-        username: string;
-        email: string;
-        password: string;
-    };
-    let initialValues = { username: "", email: "", password: "" };
-    const [formValues, setFormValues] = useState<loginElement>(initialValues);
     const handleChange = (event) => {
-        // console.log(event.target);
+        // console.log(event.target.value);
         const { name, value } = event.target;
         setFormValues({ ...formValues, [name]: value });
     };
@@ -28,7 +20,7 @@ export default function SignInModal() {
                             onChange={(event) => handleChange(event)}
                         />
                     </div>
-                    <div className="formField bg">
+                    <div className="formField">
                         <label>Password</label>
                         <input
                             type="password"

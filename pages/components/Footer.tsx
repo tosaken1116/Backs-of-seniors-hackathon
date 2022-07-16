@@ -6,19 +6,19 @@ export default function Footer() {
         <div className="sticky bottom-0">
             <div className="grid grid-cols-3">
                 <Link href="/InputCalorie">
-                    <a className=" border border-black rounded px-6 mx-auto">
+                    <div className=" border border-black rounded px-6 mx-auto">
                         食事を記録
-                    </a>
+                    </div>
                 </Link>
                 <Link href="/ranking">
-                    <a className=" border border-black rounded px-6 mx-auto">
+                    <div className=" border border-black rounded px-6 mx-auto">
                         ランキング
-                    </a>
+                    </div>
                 </Link>
                 <Link href="/calorieOfThisMonth">
-                    <a className=" border border-black rounded px-6 mx-auto">
+                    <div className=" border border-black rounded px-6 mx-auto">
                         カロ草
-                    </a>
+                    </div>
                 </Link>
             </div>
         </div>

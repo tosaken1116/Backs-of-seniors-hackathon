@@ -30,11 +30,12 @@ export default function TopPage() {
     console.log(session);
     const router = useRouter();
     const [modalIsopen, setIsOpen] = useState(false);
-    const [modalElemntName, setModalName] = useState("");
+    const [modalElementName, setModalName] = useState("");
 
     const openModal = (outputModal: string) => {
         setIsOpen(true);
         setModalName(outputModal);
+        console.log(modalElementName);
     };
 
     const afterOpenModal = () => {};
@@ -42,47 +43,53 @@ export default function TopPage() {
         setIsOpen(false);
     };
     const isShow = true;
-    if (typeof window !== "undefined" && session !== null) {
-        router.replace("/InputCalorie");
-    } else {
-        return (
+    // if (typeof window !== "undefined" && session !== null) {
+    //     router.replace("/inputCalorie");
+    // } else {
+    return (
+        <div className="flex flex-col h-screen">
             <div className="flex flex-col h-screen">
-                <div className="flex flex-col h-screen">
-                    <Header></Header>
-                    <Modal
-                        isOpen={modalIsopen}
-                        onAfterOpen={afterOpenModal}
-                        onRequestClose={closeModal}
-                    >
-                        {modalElemntName == "SI" && <SignInModal></SignInModal>}
-                        {modalElemntName == "SU" && <SignUpModal></SignUpModal>}
-                    </Modal>
-                    <div className="flex-grow">
-                        <div className="justify-center text-2xl text-center mt-36">
-                            アプリ名を入力
-                        </div>
-                        <div className="flex mt-64 justify-center px-auto">
-                            <div className="border mx-auto rounded-xl text-center border-black px-12 py-6 text-2xl">
-                                Sign In
-                            </div>
-                            <div className="border mx-auto rounded-xl text-center border-black px-12 py-6 text-2xl">
-                                Sign Up
-                            </div>
-                        </div>
-                        {session === null ? (
-                            <div className="mt-12 flex justify-center mx-auto px-auto">
-                                <button
-                                    onClick={() => signIn()}
-                                    className=" border mx-auto rounded-xl text-center border-black px-12 py-6 text-2xl"
-                                >
-                                    他のアカウントでログイン
-                                </button>
-                            </div>
-                        ) : null}
+                <Header></Header>
+                <Modal
+                    isOpen={modalIsopen}
+                    onAfterOpen={afterOpenModal}
+                    onRequestClose={closeModal}
+                >
+                    {modalElementName == "SI" && <SignInModal></SignInModal>}
+                    {modalElementName == "SU" && <SignUpModal></SignUpModal>}
+                </Modal>
+                <div className="flex-grow">
+                    <div className="justify-center text-2xl text-center mt-36">
+                        アプリ名を入力
                     </div>
-                    <Footer></Footer>
+                    <div className="flex mt-64 justify-center px-auto">
+                        <button
+                            onClick={() => openModal("SI")}
+                            className="border mx-auto rounded-xl text-center border-black px-12 py-6 text-2xl"
+                        >
+                            Sign In
+                        </button>
+                        <button
+                            onClick={() => openModal("SU")}
+                            className="border mx-auto rounded-xl text-center border-black px-12 py-6 text-2xl"
+                        >
+                            Sign Up
+                        </button>
+                    </div>
+                    {session === null ? (
+                        <div className="mt-12 flex justify-center mx-auto px-auto">
+                            <button
+                                onClick={() => signIn()}
+                                className=" border mx-auto rounded-xl text-center border-black px-12 py-6 text-2xl"
+                            >
+                                他のアカウントでログイン
+                            </button>
+                        </div>
+                    ) : null}
                 </div>
+                <Footer></Footer>
             </div>
-        );
-    }
+        </div>
+    );
 }
+// }

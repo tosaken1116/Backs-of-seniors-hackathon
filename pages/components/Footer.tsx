@@ -5,7 +5,7 @@ export default function Footer() {
     return router.pathname != "/" ? (
         <div className="sticky bottom-0">
             <div className="grid grid-cols-3">
-                <Link href="/InputCalorie">
+                <Link href="/inputCalorie">
                     <div className=" border border-black rounded px-6 mx-auto">
                         食事を記録
                     </div>

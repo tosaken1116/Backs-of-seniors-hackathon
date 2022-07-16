@@ -1,5 +1,6 @@
-import { useState } from "react";
 import Modal from "react-modal";
+
+import { useState } from "react";
 
 const customStyles = {
     overlay: {
@@ -23,7 +24,7 @@ const customStyles = {
 
 Modal.setAppElement("#__next");
 
-const App = () => {
+export default function App() {
     const [modalIsopen, setIsOpen] = useState(false);
 
     const openModal = () => {
@@ -45,4 +46,4 @@ const App = () => {
             />
         </div>
     );
-};
+}

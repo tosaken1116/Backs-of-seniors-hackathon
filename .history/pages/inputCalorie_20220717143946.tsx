@@ -47,7 +47,7 @@ export default function InputCalorie() {
                         <div className="flex justify-center">
                             <button
                                 type="submit"
-                                className="border  border-black"
+                                className="px-2 py-1 bg-green-400 text-xl text-white font-semibold rounded hover:bg-green-500"
                             >
                                 入力
                             </button>
@@ -60,7 +60,7 @@ export default function InputCalorie() {
                         </div>
                     </div>
                 </form>
-                <div>今日のご飯</div>
+                <div>今日のごはん</div>
                 <ul>
                     {detectMeals.map((detectMeal, index) => (
                         <div key={index}>

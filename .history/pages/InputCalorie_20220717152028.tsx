@@ -34,6 +34,7 @@ export default function InputCalorie() {
     return (
         <div className="flex flex-col h-screen">
             <Header></Header>
+            <div className="bg-yellow-200"></div>
             <div className="flex-grow">
                 <form onSubmit={setDetectCaloriesOfMeals}>
                     <div className="grid grid-cols-2">
@@ -60,7 +61,7 @@ export default function InputCalorie() {
                         </div>
                     </div>
                 </form>
-                <div>今日のご飯</div>
+                <div>今日のごはん</div>
                 <ul>
                     {detectMeals.map((detectMeal, index) => (
                         <div key={index}>

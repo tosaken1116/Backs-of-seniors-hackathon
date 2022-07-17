@@ -1,7 +1,9 @@
+import axios from "axios";
 import Link from "next/link";
 import CalorieOfKUSA from "./components/calorieKUSA";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
+const BaseURL = "";
 export default function CalorieOfThisMonth() {
     const testKUSAdata = [
         {
@@ -93,6 +95,9 @@ export default function CalorieOfThisMonth() {
             "twitter",
             "top=200,left=300,width=600,height=400"
         );
+        axios.get<[]>(BaseURL).then((res) => {
+            console.log(res);
+        });
     };
     type rankingUser = {
         userName: string;

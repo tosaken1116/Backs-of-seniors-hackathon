@@ -1,4 +1,6 @@
+import axios, { AxiosResponse } from "axios";
 import { useState } from "react";
+
 export default function SignInModal() {
     type loginElement = {
         username: string;
@@ -9,6 +11,31 @@ export default function SignInModal() {
     const [formValues, setFormValues] = useState<loginElement>(initialValues);
     const handleChange = (event) => {
         // console.log(event.target);
+        axios
+            .post<[]>(BaseURL + "/users/signup", {
+                name: formValues.username,
+                email: formValues.email,
+                password: formValues.password,
+            })
+            .then((res) => {
+                console.log(res.data);
+                axios
+                    .post<[]>(BaseURL + "/users/sighin", {
+                        email: formValues.email,
+                        password: formValues.password,
+                    })
+                    .then((res: AxiosResponse) => {
+                        console.log(res.data.jwt);
+                        document.cookie = res.data.jwt;
+                        window.location.href = "/?#Refrigerator";
+                    })
+                    .catch((error) => {
+                        console.log(error);
+                    });
+            })
+            .catch((error) => {
+                console.log(error);
+            });
         const { name, value } = event.target;
         setFormValues({ ...formValues, [name]: value });
     };

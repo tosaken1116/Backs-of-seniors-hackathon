@@ -1,8 +1,10 @@
+import axios, { AxiosResponse } from "axios"
 import { useState } from "react";
+
 export default function SignInModal() {
     type loginElement = {
         username: string;
-        email: string;
+        email: string; 
         password: string;
     };
     type register = {
@@ -23,6 +25,32 @@ export default function SignInModal() {
 
     const handleSubmit = (event) => {
         event.preventDefault();
+        axios.post<[]>(BaseURL+"/users/signup",
+            {
+                 "name":formValues.username,
+                 "email":formValues.email,
+                 "password":formValues.password
+            }
+        )
+        .then((res) => {
+            console.log(res.data);
+            axios.post<[]>(BaseURL+"/users/sighin",
+            {
+                "email":formValues.email,
+                "password":formValues.password
+            },
+        )
+        .then((res:AxiosResponse) => {
+            console.log(res.data.jwt);
+            document.cookie = res.data.jwt;
+            window.location.href = '/?#Refrigerator'
+        }).catch((error) =>{
+            console.log(error);
+        });
+    }).catch((error) =>{
+        console.log(error);
+    });
+}
         //ログイン情報の送信
         //バリデーションチェック
         {

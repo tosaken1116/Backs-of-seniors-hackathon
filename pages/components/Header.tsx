@@ -31,7 +31,7 @@ export default function Header() {
                                 ? "text-red-500"
                                 : goalUserCalories * 1.1 < calorieOfToday
                                 ? "text-green-400"
-                                : goalUserCalories == calorieOfToday
+                                : goalUserCalories < calorieOfToday
                                 ? " bg-blue-600"
                                 : goalUserCalories * 0.9 < calorieOfToday
                                 ? "text-green-400"
@@ -46,7 +46,7 @@ export default function Header() {
                     >
                         {goalUserCalories}
                     </div>
-                    <div className=" inline text-gray-500">kcal</div>
+                    <div className="text-gray-500 inline">kcal</div>
                 </div>
             ) : (
                 <div className=""></div>

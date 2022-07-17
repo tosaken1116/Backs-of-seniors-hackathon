@@ -1,7 +1,13 @@
+<<<<<<< HEAD
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import { useState } from "react";
 import Image from "next/image";
+=======
+import { useState } from "react";
+import Footer from "./components/Footer";
+import Header from "./components/Header";
+>>>>>>> 617d90a05a8186d533e397ab8e824635776c95f2
 type userDataType = {
     userName: string;
     sumCalorie: number;
@@ -70,6 +76,7 @@ export default function Ranking() {
     return (
         <div className="flex flex-col h-screen">
             <Header></Header>
+<<<<<<< HEAD
             <Image
                 src="/aHR0cDovL3BuZ2ltZy5jb20vdXBsb2Fkcy9jb25mZXR0aS9jb25mZXR0aV9QTkc4NzA0NS5wbmc=.png"
                 className="-z-10"
@@ -82,22 +89,38 @@ export default function Ranking() {
                     <button
                         onClick={() => setRankingTitle("test1")}
                         className={rankingTitle === "test1" ? "border-b-2" : ""}
+=======
+            <div className="flex-grow">
+                <div className="grid grid-cols-3 mx-36">
+                    <button
+                        onClick={() => setRankingTitle("test1")}
+                        className={rankingTitle == "test1" ? "border-b-2" : ""}
+>>>>>>> 617d90a05a8186d533e397ab8e824635776c95f2
                     >
                         test1
                     </button>
                     <button
                         onClick={() => setRankingTitle("test2")}
+<<<<<<< HEAD
                         className={rankingTitle === "test2" ? "border-b-2" : ""}
+=======
+                        className={rankingTitle == "test2" ? "border-b-2" : ""}
+>>>>>>> 617d90a05a8186d533e397ab8e824635776c95f2
                     >
                         test2
                     </button>
                     <button
                         onClick={() => setRankingTitle("test3")}
+<<<<<<< HEAD
                         className={rankingTitle === "test3" ? "border-b-2" : ""}
+=======
+                        className={rankingTitle == "test3" ? "border-b-2" : ""}
+>>>>>>> 617d90a05a8186d533e397ab8e824635776c95f2
                     >
                         test3
                     </button>
                 </div>
+<<<<<<< HEAD
                 <div
                     className="bg-gradient-to-t <url->https://images.pngpngpng.com/aHR0cDovL3BuZ2ltZy5jb20vdXBsb2Fkcy9jb25mZXR0aS9jb25mZXR0aV9QTkc4NzA0NS5wbmc%3D.png</url->
                                "
@@ -123,6 +146,23 @@ export default function Ranking() {
                         ))}
                     </ul>
                 </div>
+=======
+                <ul className="justify-center mx-auto w-64">
+                    {userDatas.map((user, index) => (
+                        <div className=" px-24 py-8 border border-black my-3 inline-block">
+                            {user.userName}さん
+                            {rankingTitle == "test1"
+                                ? user.differenceCalorie
+                                : rankingTitle == "test2"
+                                ? user.sumCalorie
+                                : rankingTitle == "test3"
+                                ? user.differenceCalorie
+                                : user.sumCalorie}
+                            cal
+                        </div>
+                    ))}
+                </ul>
+>>>>>>> 617d90a05a8186d533e397ab8e824635776c95f2
             </div>
             <Footer></Footer>
         </div>

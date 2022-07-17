@@ -16,7 +16,7 @@ export default function SignInModal() {
     // const [isSubmit, setIsSubmit] = useState(false);
 
     const handleChange = (event) => {
-        console.log(event.target);
+        // console.log(event.target);
         const { name, value } = event.target;
         setFormValues({ ...formValues, [name]: value });
     };
@@ -55,53 +55,78 @@ export default function SignInModal() {
     };*/
 
     return (
-        <div className="formcontainer">
-            <form onSubmit={(event) => handleSubmit(event)}>
-                <h1>Sign Up</h1>
-                <hr />
-                <div className="uiForm">
-                    <div className="formField">
-                        <label>ユーザー名</label>
-                        <input
-                            type="text"
-                            placeholder="UserName"
-                            name="username"
-                            required
-                            onChange={(event) => handleChange(event)}
-                        />
-                        {/* <div>{formErrors.username}</div> */}
+        <p className="text-center">
+            <div>
+                <div className="mt-32">
+                    {/* <div className="bg-rose-400"></div> */}
+                    <div>
+                        <div className="flex-initial bg-rose-300 ">
+                            <div>Sign Up</div>
+                        </div>
+                        <div className="formcontainer">
+                            <form onSubmit={(event) => handleSubmit(event)}>
+                                <hr />
+                                <div className="uiForm">
+                                    <div className="formField">
+                                        <label>ユーザー名</label>
+                                        <br></br>
+                                        <input
+                                            className="text-center border-solid border-2 border-sky-300"
+                                            type="text"
+                                            placeholder="ユーザー名"
+                                            name="username"
+                                            required
+                                            onChange={(event) =>
+                                                handleChange(event)
+                                            }
+                                        />
+                                        {/* <div>{formErrors.username}</div> */}
+                                    </div>
+                                    {/* <p className="errormsg">{formErrors.username}</p> */}
+                                    <div className="formField ">
+                                        <label>メールアドレス</label>
+                                        <br></br>
+                                        <input
+                                            className="text-center border-solid border-2 border-sky-300"
+                                            type="text"
+                                            placeholder="メールアドレス"
+                                            name="email"
+                                            required
+                                            onChange={(event) =>
+                                                handleChange(event)
+                                            }
+                                        />
+                                        {/* <div>{formErrors.email}</div> */}
+                                    </div>
+                                    {/* <p className="errormsg">{formErrors.email}</p> */}
+                                    <div className="formField ">
+                                        <label>パスワード</label>
+                                        <br></br>
+                                        <input
+                                            className="text-center border-solid border-2 border-sky-300"
+                                            type="password"
+                                            placeholder="パスワード"
+                                            name="password"
+                                            required
+                                            onChange={(event) =>
+                                                handleChange(event)
+                                            }
+                                        />
+                                    </div>
+                                    {/* <div>{formErrors.password}</div> */}
+                                    {/* <p className="errormsg">{formErrors.password}</p> */}
+                                    <div className="m-3">
+                                        <button className="px-2 py-1 bg-green-400 text-xl text-white font-semibold rounded hover:bg-green-500">
+                                            Sign Up!
+                                        </button>
+                                    </div>
+                                    {/* {Object.keys isSubmit && ( <div>サインアップ完了</div>)}*/}
+                                </div>
+                            </form>
+                        </div>
                     </div>
-                    {/* <p className="errormsg">{formErrors.username}</p> */}
-                    <div className="formField">
-                        <label>メールアドレス</label>
-                        <input
-                            type="text"
-                            placeholder="Email"
-                            name="email"
-                            required
-                            onChange={(event) => handleChange(event)}
-                        />
-                        {/* <div>{formErrors.email}</div> */}
-                    </div>
-                    {/* <p className="errormsg">{formErrors.email}</p> */}
-                    <div className="formField">
-                        <label>パスワード</label>
-                        <input
-                            type="password"
-                            placeholder="Password"
-                            name="password"
-                            required
-                            onChange={(event) => handleChange(event)}
-                        />
-                    </div>
-                    {/* <div>{formErrors.password}</div> */}
-                    {/* <p className="errormsg">{formErrors.password}</p> */}
-                    <button className="SubmitButton" type="submit">
-                        サインアップ
-                    </button>
-                    {/* {Object.keys isSubmit && ( <div>サインアップ完了</div>)}*/}
                 </div>
-            </form>
-        </div>
+            </div>
+        </p>
     );
 }

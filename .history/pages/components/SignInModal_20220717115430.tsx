@@ -26,9 +26,7 @@ export default function SignInModal() {
                                 <div className="uiForm">
                                     <div className="formField">
                                         <label>メールアドレス</label>
-                                        <br></br>
                                         <input
-                                            className="text-center border-solid border-2 border-sky-300"
                                             type="text"
                                             placeholder="メールアドレス"
                                             name="email"
@@ -38,11 +36,9 @@ export default function SignInModal() {
                                             }
                                         />
                                     </div>
-                                    <div className="formField">
+                                    <div className="formField bg">
                                         <label>パスワード</label>
-                                        <br></br>
                                         <input
-                                            className="text-center border-solid border-2 border-sky-300"
                                             type="password"
                                             placeholder="パスワード"
                                             name="password"

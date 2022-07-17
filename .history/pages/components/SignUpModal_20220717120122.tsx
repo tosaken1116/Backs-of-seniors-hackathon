@@ -67,11 +67,9 @@ export default function SignInModal() {
                             <form onSubmit={(event) => handleSubmit(event)}>
                                 <hr />
                                 <div className="uiForm">
-                                    <div className="formField">
+                                    <div className="formField ">
                                         <label>ユーザー名</label>
-                                        <br></br>
                                         <input
-                                            className="text-center border-solid border-2 border-sky-300"
                                             type="text"
                                             placeholder="ユーザー名"
                                             name="username"
@@ -85,9 +83,7 @@ export default function SignInModal() {
                                     {/* <p className="errormsg">{formErrors.username}</p> */}
                                     <div className="formField ">
                                         <label>メールアドレス</label>
-                                        <br></br>
                                         <input
-                                            className="text-center border-solid border-2 border-sky-300"
                                             type="text"
                                             placeholder="メールアドレス"
                                             name="email"
@@ -101,9 +97,7 @@ export default function SignInModal() {
                                     {/* <p className="errormsg">{formErrors.email}</p> */}
                                     <div className="formField ">
                                         <label>パスワード</label>
-                                        <br></br>
                                         <input
-                                            className="text-center border-solid border-2 border-sky-300"
                                             type="password"
                                             placeholder="パスワード"
                                             name="password"

@@ -71,7 +71,7 @@ export default function SignInModal() {
                                         <label>ユーザー名</label>
                                         <br></br>
                                         <input
-                                            className="text-center border-solid border-2 border-sky-300"
+                                            className="text-center"
                                             type="text"
                                             placeholder="ユーザー名"
                                             name="username"
@@ -87,7 +87,6 @@ export default function SignInModal() {
                                         <label>メールアドレス</label>
                                         <br></br>
                                         <input
-                                            className="text-center border-solid border-2 border-sky-300"
                                             type="text"
                                             placeholder="メールアドレス"
                                             name="email"
@@ -103,7 +102,6 @@ export default function SignInModal() {
                                         <label>パスワード</label>
                                         <br></br>
                                         <input
-                                            className="text-center border-solid border-2 border-sky-300"
                                             type="password"
                                             placeholder="パスワード"
                                             name="password"

@@ -28,8 +28,7 @@ export default function SignInModal() {
                                         <label>メールアドレス</label>
                                         <br></br>
                                         <input
-                                            className="text-center border-solid border-2 border-sky-300"
-                                            type="text"
+                                            type="text-center border-solid border-2 border-sky-300"
                                             placeholder="メールアドレス"
                                             name="email"
                                             required
@@ -42,8 +41,7 @@ export default function SignInModal() {
                                         <label>パスワード</label>
                                         <br></br>
                                         <input
-                                            className="text-center border-solid border-2 border-sky-300"
-                                            type="password"
+                                            type="password border-solid border-2 border-sky-300"
                                             placeholder="パスワード"
                                             name="password"
                                             required

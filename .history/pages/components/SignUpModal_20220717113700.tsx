@@ -57,7 +57,7 @@ export default function SignInModal() {
     return (
         <p className="text-center">
             <div>
-                <div className="mt-32">
+                <div className=" py-auto flex">
                     {/* <div className="bg-rose-400"></div> */}
                     <div>
                         <div className="flex-initial bg-rose-300 ">
@@ -67,13 +67,11 @@ export default function SignInModal() {
                             <form onSubmit={(event) => handleSubmit(event)}>
                                 <hr />
                                 <div className="uiForm">
-                                    <div className="formField">
+                                    <div className="formField ">
                                         <label>ユーザー名</label>
-                                        <br></br>
                                         <input
-                                            className="text-center border-solid border-2 border-sky-300"
                                             type="text"
-                                            placeholder="ユーザー名"
+                                            placeholder="ユーザー名を入力してください"
                                             name="username"
                                             required
                                             onChange={(event) =>
@@ -85,11 +83,9 @@ export default function SignInModal() {
                                     {/* <p className="errormsg">{formErrors.username}</p> */}
                                     <div className="formField ">
                                         <label>メールアドレス</label>
-                                        <br></br>
                                         <input
-                                            className="text-center border-solid border-2 border-sky-300"
                                             type="text"
-                                            placeholder="メールアドレス"
+                                            placeholder="メールアドレスを入力してください"
                                             name="email"
                                             required
                                             onChange={(event) =>
@@ -101,11 +97,9 @@ export default function SignInModal() {
                                     {/* <p className="errormsg">{formErrors.email}</p> */}
                                     <div className="formField ">
                                         <label>パスワード</label>
-                                        <br></br>
                                         <input
-                                            className="text-center border-solid border-2 border-sky-300"
                                             type="password"
-                                            placeholder="パスワード"
+                                            placeholder="パスワードを入力してください"
                                             name="password"
                                             required
                                             onChange={(event) =>

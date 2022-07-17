@@ -8,7 +8,7 @@ export default function SignInModal() {
     let initialValues = { username: "", email: "", password: "" };
     const [formValues, setFormValues] = useState<loginElement>(initialValues);
     const handleChange = (event) => {
-        // console.log(event.target);
+        console.log(event.target);
         const { name, value } = event.target;
         setFormValues({ ...formValues, [name]: value });
     };

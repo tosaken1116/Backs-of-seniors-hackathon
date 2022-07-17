@@ -71,7 +71,6 @@ export default function SignInModal() {
                                         <label>ユーザー名</label>
                                         <br></br>
                                         <input
-                                            className="text-center border-solid border-2 border-sky-300"
                                             type="text"
                                             placeholder="ユーザー名"
                                             name="username"
@@ -83,11 +82,10 @@ export default function SignInModal() {
                                         {/* <div>{formErrors.username}</div> */}
                                     </div>
                                     {/* <p className="errormsg">{formErrors.username}</p> */}
-                                    <div className="formField ">
+                                    <div className="mb-5 formField ">
                                         <label>メールアドレス</label>
                                         <br></br>
                                         <input
-                                            className="text-center border-solid border-2 border-sky-300"
                                             type="text"
                                             placeholder="メールアドレス"
                                             name="email"
@@ -99,11 +97,10 @@ export default function SignInModal() {
                                         {/* <div>{formErrors.email}</div> */}
                                     </div>
                                     {/* <p className="errormsg">{formErrors.email}</p> */}
-                                    <div className="formField ">
+                                    <div className="mb-5 formField ">
                                         <label>パスワード</label>
                                         <br></br>
                                         <input
-                                            className="text-center border-solid border-2 border-sky-300"
                                             type="password"
                                             placeholder="パスワード"
                                             name="password"

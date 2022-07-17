@@ -1,7 +1,7 @@
+import Link from "next/link";
 import CalorieOfKUSA from "./components/calorieKUSA";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
-
 export default function CalorieOfThisMonth() {
     const testKUSAdata = [
         {
@@ -75,7 +75,6 @@ export default function CalorieOfThisMonth() {
                 ? "🟨"
                 : "🟩";
     });
-    console.log(caloriteTextString);
     const tweetText =
         "https://twitter.com/share?text=" +
         caloriteTextString +
@@ -123,14 +122,14 @@ export default function CalorieOfThisMonth() {
                     <div>平均１日摂取カロリー:{calorieAverage}cal</div>
                     <div>
                         <div>合計摂取カロリー:{calorieSum}cal</div>
-                        <a
+                        <Link
                             href={tweetText}
                             className="twitter-share-button"
                             rel="nofollow noopener noreferrer"
                             target="_blank"
                         >
                             Tweet
-                        </a>
+                        </Link>
                         <script
                             async
                             src="https://platform.twitter.com/widgets.js"

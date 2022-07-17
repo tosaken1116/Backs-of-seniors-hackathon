@@ -45,6 +45,26 @@ export default function TopPage() {
         setIsOpen(false);
     };
     const isShow = true;
+<<<<<<< HEAD
+    if (typeof window !== "undefined" && session !== null) {
+        router.replace("/inputCalorie");
+    } else {
+        return (
+            <div className="flex flex-col h-screen">
+                <div className="flex flex-col h-screen">
+                    <Header></Header>
+                    <Modal
+                        isOpen={modalIsopen}
+                        onAfterOpen={afterOpenModal}
+                        onRequestClose={closeModal}
+                    >
+                        {modalElemntName == "SI" && <SignInModal></SignInModal>}
+                        {modalElemntName == "SU" && <SignUpModal></SignUpModal>}
+                    </Modal>
+                    <div className="flex-grow">
+                        <div className="justify-center text-2xl text-center mt-36">
+                            アプリ名を入力
+=======
     // if (typeof window !== "undefined" && session !== null) {
     //     router.replace("/inputCalorie");
     // } else {
@@ -72,6 +92,7 @@ export default function TopPage() {
                         </div>
                         <div className=" bg-slate-50 border-b-8 border-l-4 border-zinc-600 h-20 w-80 rounded-tr-full rounded-bl-full">
                             to
+>>>>>>> 617d90a05a8186d533e397ab8e824635776c95f2
                         </div>
                         <div className="ml-16 bg-slate-50 border-b-8 border-l-4 border-zinc-600 h-20 w-80 rounded-tr-full rounded-bl-full">
                             CalLog

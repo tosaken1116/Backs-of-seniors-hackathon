@@ -1,4 +1,4 @@
-import { useState } from "react";
+import Statrom "react";
 export default function SignInModal() {
     type loginElement = {
         username: string;
@@ -19,12 +19,12 @@ export default function SignInModal() {
                     <div>
                         <div className="flex-initial bg-rose-300">
                             <div>Sign In</div>
-                        </div>
+                   </div>
                         <div className="formcontainer">
                             <form>
                                 <hr />
                                 <div className="uiForm">
-                                    <div className="formField">
+                                div className="formField">
                                         <label>メールアドレス</label>
                                         <br></br>
                                         <input

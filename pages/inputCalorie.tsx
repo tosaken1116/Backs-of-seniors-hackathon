@@ -5,7 +5,7 @@ type mealType = {
     mealName: string;
     mealCalorie: number;
 };
-export default function inputCalorie() {
+export default function InputCalorie() {
     const [meals, setMeals] = useState("");
     const initialMeals = [];
     const [detectMeals, setDetectMeals] = useState<mealType[]>(initialMeals);

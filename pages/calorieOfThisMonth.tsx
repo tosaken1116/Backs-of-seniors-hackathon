@@ -106,10 +106,10 @@ export default function CalorieOfThisMonth() {
         <div className="flex flex-col h-screen">
             <Header></Header>
             <div className="flex-grow">
-                <div className="text-center text-4xl mt-4">
+                <div className="text-center text-4xl font-mono font-black mt-4">
                     カロリー日記[{thisMonth}]
                 </div>
-                <div className="  grid grid-cols-7 grid-rows-5 w-72 mt-12 mx-auto">
+                <div className=" grid grid-cols-7 grid-rows-5 w-72 mt-12 mx-auto">
                     {testKUSAdata.map((calorieOfDay, index) => (
                         <CalorieOfKUSA
                             key={index}
@@ -119,7 +119,7 @@ export default function CalorieOfThisMonth() {
                         ></CalorieOfKUSA>
                     ))}
                 </div>
-                <div className=" justify-center mx-auto w-72 mt-12">
+                <div className="font-mono justify-center mx-auto w-72 mt-12 box-border h-2 p-4 border-2 box-decoration-slice bg-amber-100">
                     <div>平均１日摂取カロリー:{calorieAverage}cal</div>
                     <div>
                         <div>合計摂取カロリー:{calorieSum}cal</div>

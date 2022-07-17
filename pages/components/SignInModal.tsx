@@ -13,34 +13,56 @@ export default function SignInModal() {
         setFormValues({ ...formValues, [name]: value });
     };
     return (
-        <div className="formcontainer">
-            <form>
-                <h1>Sign In</h1>
-                <hr />
-                <div className="uiForm">
-                    <div className="formField">
-                        <label>Email</label>
-                        <input
-                            type="text"
-                            placeholder="Email"
-                            name="email"
-                            required
-                            onChange={(event) => handleChange(event)}
-                        />
+        <p className="text-center ">
+            <div>
+                <div className="mt-32">
+                    <div>
+                        <div className="flex-initial bg-rose-300">
+                            <div>Sign In</div>
+                        </div>
+                        <div className="formcontainer">
+                            <form>
+                                <hr />
+                                <div className="uiForm">
+                                    <div className="formField">
+                                        <label>メールアドレス</label>
+                                        <br></br>
+                                        <input
+                                            className="text-center border-solid border-2 border-sky-300"
+                                            type="text"
+                                            placeholder="メールアドレス"
+                                            name="email"
+                                            required
+                                            onChange={(event) =>
+                                                handleChange(event)
+                                            }
+                                        />
+                                    </div>
+                                    <div className="formField">
+                                        <label>パスワード</label>
+                                        <br></br>
+                                        <input
+                                            className="text-center border-solid border-2 border-sky-300"
+                                            type="password"
+                                            placeholder="パスワード"
+                                            name="password"
+                                            required
+                                            onChange={(event) =>
+                                                handleChange(event)
+                                            }
+                                        />
+                                    </div>
+                                    <div className="m-3">
+                                        <button className="px-2 py-1 bg-green-400 text-xl text-white font-semibold rounded hover:bg-green-500">
+                                            Sign Up!
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
                     </div>
-                    <div className="formField bg">
-                        <label>Password</label>
-                        <input
-                            type="password"
-                            placeholder="Password"
-                            name="password"
-                            required
-                            onChange={(event) => handleChange(event)}
-                        />
-                    </div>
-                    <button className="SubmitButton">Sign In</button>
                 </div>
-            </form>
-        </div>
+            </div>
+        </p>
     );
 }

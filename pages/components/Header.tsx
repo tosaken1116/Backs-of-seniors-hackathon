@@ -3,8 +3,8 @@ import { useRouter } from "next/router";
 // import styles from "./../../styles/header.modules.css";
 export default function Header() {
     const router = useRouter();
-    // const pathBool = router.pathname != "/";
-    const pathBool = true;
+    const pathBool = router.pathname != "/";
+    // const pathBool = true;
     const calorieOfToday = 50;
     const goalUserCalories = 100;
     const { data: session } = useSession();
@@ -15,12 +15,14 @@ export default function Header() {
                 CalLog
             </div>
             {pathBool ? (
-                <div className="absolute right-10 bottom-2 border-b-2 border-b-gray-700 border-dashed">
-                    <th className=" text-gray-500">目標カロリー摂取量</th>
-                    <th className="">:</th>
-                    <th
+                <div className="absolute right-10 inline bottom-2 border-b-2 border-b-gray-700 border-dashed">
+                    <div className=" text-gray-500 inline">
+                        目標カロリー摂取量
+                    </div>
+                    <div className="inline">:</div>
+                    <div
                         className={
-                            "text-4xl " +
+                            "text-4xl inline " +
                             (goalUserCalories * 1.4 < calorieOfToday
                                 ? " text-red-700"
                                 : goalUserCalories * 1.3 < calorieOfToday
@@ -43,8 +45,8 @@ export default function Header() {
                         }
                     >
                         {goalUserCalories}
-                    </th>
-                    <th className="text-gray-500">kcal</th>
+                    </div>
+                    <div className=" inline text-gray-500">kcal</div>
                 </div>
             ) : (
                 <div className=""></div>

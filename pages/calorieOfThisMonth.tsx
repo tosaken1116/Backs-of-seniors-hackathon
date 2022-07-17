@@ -1,7 +1,7 @@
+import Link from "next/link";
 import CalorieOfKUSA from "./components/calorieKUSA";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
-
 export default function CalorieOfThisMonth() {
     const testKUSAdata = [
         {
@@ -38,11 +38,11 @@ export default function CalorieOfThisMonth() {
         },
         {
             date: 9,
-            calorie: 100,
+            calorie: 700,
         },
         {
             date: 10,
-            calorie: 100,
+            calorie: 500,
         },
         {
             date: 11,
@@ -50,6 +50,14 @@ export default function CalorieOfThisMonth() {
         },
         {
             date: 12,
+            calorie: 200,
+        },
+        {
+            date: 13,
+            calorie: 300,
+        },
+        {
+            date: 14,
             calorie: 100,
         },
     ];
@@ -75,7 +83,6 @@ export default function CalorieOfThisMonth() {
                 ? "🟨"
                 : "🟩";
     });
-    console.log(caloriteTextString);
     const tweetText =
         "https://twitter.com/share?text=" +
         caloriteTextString +
@@ -109,7 +116,7 @@ export default function CalorieOfThisMonth() {
                 <div className="text-center text-4xl font-mono font-black mt-4">
                     カロリー日記[{thisMonth}]
                 </div>
-                <div className=" grid grid-cols-7 grid-rows-5 w-72 mt-12 mx-auto">
+                <div className="  grid grid-cols-7 grid-rows-5 w-72 mt-12 mx-auto">
                     {testKUSAdata.map((calorieOfDay, index) => (
                         <CalorieOfKUSA
                             key={index}
@@ -119,28 +126,42 @@ export default function CalorieOfThisMonth() {
                         ></CalorieOfKUSA>
                     ))}
                 </div>
-                <div className="font-mono justify-center mx-auto w-72 mt-12 box-border h-2 p-4 border-2 box-decoration-slice bg-amber-100">
-                    <div>平均１日摂取カロリー:{calorieAverage}cal</div>
+                <div className="font-mono shadow-xl justify-center mx-auto rounded-xl w-80 mt-12 box-border p-4 border-2 box-decoration-slice bg-amber-100">
                     <div>
-                        <div>合計摂取カロリー:{calorieSum}cal</div>
-                        <a
-                            href={tweetText}
-                            className="twitter-share-button"
-                            rel="nofollow noopener noreferrer"
-                            target="_blank"
-                        >
-                            Tweet
-                        </a>
-                        <script
-                            async
-                            src="https://platform.twitter.com/widgets.js"
-                            charSet="utf-8"
-                        ></script>
-                        {/* <iframe onClick={() => openTwitter()} title="tweet"src="https://platform.twitter.com/widgets/tweet_button.f39f39d5e1aec76c12af50a9a19e4fee.en.html#dnt=false&id=twitter-widget-0&lang=en&original_referer=http%3A%2F%2Flocalhost%3A3000%2FcalorieOfThisMonth&size=m&text=%E5%B9%B3%E5%9D%87%EF%BC%91%E6%97%A5%E6%91%82%E5%8F%96%E3%82%AB%E3%83%AD%E3%83%AA%E3%83%BC%3A100cal%0D%0A%E5%90%88%E8%A8%88%E6%91%82%E5%8F%96%E3%82%AB%E3%83%AD%E3%83%AA%E3%83%BC%3A20000cal%0D%0A&time=1657935435852&type=share&url=http%3A%2F%2Flocalhost%3A3000%2FcalorieOfThisMonth">
+                        <div className="inline border-b-2 border-dashed">
+                            平均１日摂取カロリー:
+                        </div>
+                        <div className="inline text-xl">{calorieAverage}</div>
+                        <div className="inline">cal</div>
+                    </div>
+                    <div>
+                        <div className="inline border-b-2 border-dashed">
+                            合計摂取カロリー:
+                        </div>
+                        <div className="inline text-xl">{calorieSum}</div>
+                        <div className="inline">cal</div>
+                    </div>
+
+                    {/* <iframe onClick={() => openTwitter()} title="tweet"src="https://platform.twitter.com/widgets/tweet_button.f39f39d5e1aec76c12af50a9a19e4fee.en.html#dnt=false&id=twitter-widget-0&lang=en&original_referer=http%3A%2F%2Flocalhost%3A3000%2FcalorieOfThisMonth&size=m&text=%E5%B9%B3%E5%9D%87%EF%BC%91%E6%97%A5%E6%91%82%E5%8F%96%E3%82%AB%E3%83%AD%E3%83%AA%E3%83%BC%3A100cal%0D%0A%E5%90%88%E8%A8%88%E6%91%82%E5%8F%96%E3%82%AB%E3%83%AD%E3%83%AA%E3%83%BC%3A20000cal%0D%0A&time=1657935435852&type=share&url=http%3A%2F%2Flocalhost%3A3000%2FcalorieOfThisMonth">
                 Tweet
             </iframe>
             <script async src="https://platform.twitter.com/widgets.js" charSet="utf-8"></script> */}
+                    <div className="flex mx-auto bg-gradient-to-t justify-center from-orange-400 to-orange-200  border-orange-500 text-green-700 shadow-xl border-2 w-36 text-center rounded-full px-2">
+                        <Link
+                            href={tweetText}
+                            className=" border-2 border-black"
+                            rel="nofollow noopener noreferrer"
+                            target="_blank"
+                        >
+                            みんなに見せる
+                        </Link>
                     </div>
+
+                    <script
+                        async
+                        src="https://platform.twitter.com/widgets.js"
+                        charSet="utf-8"
+                    ></script>
                 </div>
             </div>
 

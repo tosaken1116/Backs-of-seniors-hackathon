@@ -45,9 +45,12 @@ export default function TopPage() {
         setIsOpen(false);
     };
     const isShow = true;
-    // if (typeof window !== "undefined" && session !== null) {
-    //     router.replace("/inputCalorie");
-    // } else {
+
+    {
+        /* if (typeof window !== "undefined" && session !== null) {
+        router.replace("/inputCalorie");
+    } else { */
+    }
     return (
         <div className="flex flex-col h-screen">
             <Image
@@ -107,4 +110,6 @@ export default function TopPage() {
         </div>
     );
 }
-// }
+{
+    /* } */
+}

@@ -10,8 +10,8 @@ export default function Header() {
     const { data: session } = useSession();
     console.log(session);
     return (
-        <div className="bg-lime-200 text-2xl  border-4 border-green-300 shadow-xl min-h-fit sticky h-24 top-0 rounded-bl-3xl rounded-tr-3xl">
-            <div className="text-pink-300 text-5xl font-medium text-shadow-lg text-shadow-xl ml-6 mt-4">
+        <div className="bg-lime-200 text-2xl  border-4 border-green-300 shadow-xl max-h-32 sticky h-60 top-0 rounded-bl-3xl rounded-tr-3xl">
+            <div className="text-pink-300 text-5xl font-medium  ml-6 mt-4">
                 CalLog
             </div>
             {pathBool ? (

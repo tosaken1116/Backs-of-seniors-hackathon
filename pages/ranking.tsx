@@ -1,7 +1,6 @@
-import Header from "./components/Header";
-import Footer from "./components/Footer";
 import { useState } from "react";
-import Image from "next/image";
+import Footer from "./components/Footer";
+import Header from "./components/Header";
 type userDataType = {
     userName: string;
     sumCalorie: number;
@@ -70,15 +69,15 @@ export default function Ranking() {
     return (
         <div className="flex flex-col h-screen">
             <Header></Header>
-            <Image
+            {/* <Image
                 src="/aHR0cDovL3BuZ2ltZy5jb20vdXBsb2Fkcy9jb25mZXR0aS9jb25mZXR0aV9QTkc4NzA0NS5wbmc=.png"
                 className="-z-10"
                 layout="fill"
-            />
+            /> */}
             <div className="flex-grow ">
                 {/* <div className="absolute z-40 bg-gradient-to-t from-pink-300 via-pink-200 via-pink-100 via-pink-100 via-pink-50 via-pink-50 via-pink-50 via-pink-50 to-white"></div> */}
 
-                <div className="grid grid-cols-3 mx-50 bg-emerald-300 shadow-lg shadow-emerald-300/50 py-1">
+                <div className="grid grid-cols-3 mx-50 mt-24 bg-emerald-300 shadow-lg shadow-emerald-300/50 py-1">
                     <button
                         onClick={() => setRankingTitle("test1")}
                         className={rankingTitle === "test1" ? "border-b-2" : ""}
@@ -87,13 +86,13 @@ export default function Ranking() {
                     </button>
                     <button
                         onClick={() => setRankingTitle("test2")}
-                        className={rankingTitle === "test2" ? "border-b-2" : ""}
+                        className={rankingTitle == "test2" ? "border-b-2" : ""}
                     >
                         test2
                     </button>
                     <button
                         onClick={() => setRankingTitle("test3")}
-                        className={rankingTitle === "test3" ? "border-b-2" : ""}
+                        className={rankingTitle == "test3" ? "border-b-2" : ""}
                     >
                         test3
                     </button>

@@ -43,7 +43,7 @@ export default function TopPage() {
     };
     const isShow = true;
     if (typeof window !== "undefined" && session !== null) {
-        router.replace("/InputCalorie");
+        router.replace("/inputCalorie");
     } else {
         return (
             <div className="flex flex-col h-screen">

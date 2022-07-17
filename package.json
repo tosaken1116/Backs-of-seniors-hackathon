@@ -9,7 +9,6 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@types/axios": "^0.14.0",
     "@types/node": "^18.0.3",
     "@types/react": "^18.0.15",
     "@types/react-modal": "^3.13.1",

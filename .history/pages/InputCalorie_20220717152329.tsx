@@ -60,7 +60,7 @@ export default function InputCalorie() {
                         </div>
                     </div>
                 </form>
-                <div>今日のご飯</div>
+                <div className="text-gl">今日のごはん</div>
                 <ul>
                     {detectMeals.map((detectMeal, index) => (
                         <div key={index}>

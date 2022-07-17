@@ -38,6 +38,7 @@ export default function InputCalorie() {
                 <form onSubmit={setDetectCaloriesOfMeals}>
                     <div className="grid grid-cols-2">
                         <input
+                            className="text-sm"
                             placeholder="今日食べたものを入力"
                             value={meals}
                             type={"text"}
@@ -60,7 +61,7 @@ export default function InputCalorie() {
                         </div>
                     </div>
                 </form>
-                <div>今日のご飯</div>
+                <div className="text-sm">今日のごはん</div>
                 <ul>
                     {detectMeals.map((detectMeal, index) => (
                         <div key={index}>

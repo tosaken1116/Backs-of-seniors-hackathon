@@ -42,9 +42,9 @@ export default function InputCalorie() {
                             value={meals}
                             type={"text"}
                             onChange={handleMealsChange}
-                            className="border border-black"
+                            className="text-base border-solid border-2 border-black"
                         ></input>
-                        <div className="flex justify-center">
+                        <div className="flex justify-start">
                             <button
                                 type="submit"
                                 className="border  border-black"
@@ -60,11 +60,12 @@ export default function InputCalorie() {
                         </div>
                     </div>
                 </form>
-                <div>今日のご飯</div>
+                <div className="text-sm">今日のごはん</div>
                 <ul>
                     {detectMeals.map((detectMeal, index) => (
-                        <div key={index}>
-                            {detectMeal.mealName}:{detectMeal.mealCalorie}cal
+                        <div key={index} className="text-lg">
+                            {detectMeal.mealName}
+                            cal
                         </div>
                     ))}
                 </ul>

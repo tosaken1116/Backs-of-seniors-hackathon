@@ -42,7 +42,7 @@ export default function InputCalorie() {
                             value={meals}
                             type={"text"}
                             onChange={handleMealsChange}
-                            className="border border-black"
+                            className="text-sm border-solid border-2 border-black"
                         ></input>
                         <div className="flex justify-center">
                             <button
@@ -60,7 +60,7 @@ export default function InputCalorie() {
                         </div>
                     </div>
                 </form>
-                <div>今日のご飯</div>
+                <div className="text-sm">今日のごはん</div>
                 <ul>
                     {detectMeals.map((detectMeal, index) => (
                         <div key={index}>

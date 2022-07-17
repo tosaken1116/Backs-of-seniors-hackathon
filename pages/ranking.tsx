@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useState } from "react";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
@@ -66,6 +67,19 @@ export default function Ranking() {
             differenceCalorie: 200,
         },
     ];
+    const baseURL = "http://127.0.0.1:8000/";
+
+    const getRanking = () => {
+        axios
+            .get<[]>(baseURL + "getCalorieRanking", {})
+            .then((res) => {
+                console.log(res.data);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    };
+    getRanking();
     return (
         <div className="flex flex-col h-screen">
             <Header></Header>

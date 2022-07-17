@@ -8,6 +8,7 @@ type mealType = {
 export default function InputCalorie() {
     const [meals, setMeals] = useState("");
     const initialMeals = [];
+    const baseURL = "http://127.0.0.1:8000/";
     const [detectMeals, setDetectMeals] = useState<mealType[]>(initialMeals);
     const handleMealsChange = (event) => {
         setMeals(event.target.value);
@@ -18,6 +19,7 @@ export default function InputCalorie() {
         newMeals.splice(index, 1);
         setDetectMeals(newMeals);
     };
+
     const registMealToDatabase = (event) => {
         // 入力した食事の内容をバックエンドに送信
     };

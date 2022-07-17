@@ -1,9 +1,14 @@
 import Link from "next/link";
+import { useEffect, useState } from "react";
 import CalorieOfKUSA from "./components/calorieKUSA";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
+type KUSAdata = {
+    date: number;
+    calorie: number;
+};
 export default function CalorieOfThisMonth() {
-    const testKUSAdata = [
+    const initialKUSA = [
         {
             date: 1,
             calorie: 100,
@@ -53,11 +58,36 @@ export default function CalorieOfThisMonth() {
             calorie: 100,
         },
     ];
+
     const calorieAverage = 100;
     const calorieSum = 20000;
-    const thisMonth = "１月";
+
+    const datetime = new Date();
+    const [KUSAdata, setKUSAdata] = useState([]);
+
+    const generateKUSAArray = () => {
+        datetime.setDate(1);
+        const dateIndex = datetime.getDay();
+        let testKUSAdata = [];
+
+        for (let i: number; i < dateIndex; i++) {
+            testKUSAdata.push({
+                date: 0,
+                calorie: -1,
+            });
+            console.log("======");
+        }
+        testKUSAdata.concat(initialKUSA);
+        console.log(testKUSAdata);
+        return testKUSAdata;
+    };
+
+    useEffect(() => {
+        setKUSAdata(generateKUSAArray()), [];
+    });
+    const thisMonth = datetime.getMonth() + 1;
     let caloriteTextString = "";
-    testKUSAdata.forEach((data, index) => {
+    KUSAdata.forEach((data, index) => {
         if (index % 7 === 0) {
             caloriteTextString += "%0D%0A";
         }
@@ -106,10 +136,10 @@ export default function CalorieOfThisMonth() {
             <Header></Header>
             <div className="flex-grow">
                 <div className="text-center text-4xl mt-4">
-                    カロリー日記[{thisMonth}]
+                    カロリー日記[{thisMonth}月]
                 </div>
                 <div className="  grid grid-cols-7 grid-rows-5 w-72 mt-12 mx-auto">
-                    {testKUSAdata.map((calorieOfDay, index) => (
+                    {KUSAdata.map((calorieOfDay, index) => (
                         <CalorieOfKUSA
                             key={index}
                             calorieOfDay={calorieOfDay.calorie}

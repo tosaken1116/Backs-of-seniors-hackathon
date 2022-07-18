@@ -9,7 +9,7 @@ type userDataType = {
 };
 
 export default function Ranking() {
-    const [rankingTitle, setRankingTitle] = useState("test1");
+    const [rankingTitle, setRankingTitle] = useState("合計カロリー");
     const userDatas: userDataType[] = [
         {
             userName: "test",
@@ -91,24 +91,28 @@ export default function Ranking() {
             <div className="flex-grow ">
                 {/* <div className="absolute z-40 bg-gradient-to-t from-pink-300 via-pink-200 via-pink-100 via-pink-100 via-pink-50 via-pink-50 via-pink-50 via-pink-50 to-white"></div> */}
 
-                <div className="grid grid-cols-3 mx-50 mt-24 bg-emerald-300 shadow-lg shadow-emerald-300/50 py-1">
+                <div className="grid py-2 grid-cols-3 mx-50 mt-6 bg-emerald-300 shadow-lg shadow-emerald-300/50 py-1">
                     <button
-                        onClick={() => setRankingTitle("test1")}
-                        className={rankingTitle === "test1" ? "border-b-2" : ""}
+                        onClick={() => setRankingTitle("合計カロリー")}
+                        className={
+                            rankingTitle === "合計カロリー" ? "border-b-2" : ""
+                        }
                     >
-                        test1
+                        合計カロリー
                     </button>
                     <button
-                        onClick={() => setRankingTitle("test2")}
-                        className={rankingTitle == "test2" ? "border-b-2" : ""}
+                        onClick={() => setRankingTitle("誤差順")}
+                        className={rankingTitle == "誤差順" ? "border-b-2" : ""}
                     >
-                        test2
+                        誤差順
                     </button>
                     <button
-                        onClick={() => setRankingTitle("test3")}
-                        className={rankingTitle == "test3" ? "border-b-2" : ""}
+                        onClick={() => setRankingTitle("かたより")}
+                        className={
+                            rankingTitle == "かたより" ? "border-b-2" : ""
+                        }
                     >
-                        test3
+                        かたより
                     </button>
                 </div>
                 <div
@@ -126,11 +130,11 @@ export default function Ranking() {
                                 </div>
                                 <div className="px-20">
                                     {user.userName}さん
-                                    {rankingTitle == "test1"
+                                    {rankingTitle == "合計カロリー"
                                         ? user.differenceCalorie
-                                        : rankingTitle == "test2"
+                                        : rankingTitle == "誤差順"
                                         ? user.sumCalorie
-                                        : rankingTitle == "test3"
+                                        : rankingTitle == "かたより"
                                         ? user.differenceCalorie
                                         : user.sumCalorie}
                                     cal

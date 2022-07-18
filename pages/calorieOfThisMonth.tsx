@@ -12,100 +12,88 @@ export default function CalorieOfThisMonth() {
     const initialKUSA = [
         {
             date: 1,
-            calorie: 100,
+            calorie: 1500,
         },
         {
             date: 2,
-            calorie: 100,
+            calorie: 1700,
         },
         {
             date: 3,
-            calorie: 100,
+            calorie: 1800,
         },
         {
             date: 4,
-            calorie: 100,
+            calorie: 1300,
         },
         {
             date: 5,
-            calorie: 100,
+            calorie: 1500,
         },
         {
             date: 6,
-            calorie: 100,
+            calorie: 1300,
         },
         {
             date: 7,
-            calorie: 100,
+            calorie: 50000,
         },
         {
             date: 8,
-            calorie: 100,
+            calorie: 1700,
         },
         {
             date: 9,
-            calorie: 100,
+            calorie: 1800,
         },
         {
             date: 10,
-            calorie: 100,
+            calorie: 2000,
         },
         {
             date: 11,
-            calorie: 100,
+            calorie: 2400,
         },
         {
             date: 12,
-            calorie: 100,
+            calorie: 3000,
+        },
+        {
+            date: 13,
+            calorie: 2300,
+        },
+        {
+            date: 14,
+            calorie: 2300,
+        },
+        {
+            date: 15,
+            calorie: 1200,
+        },
+        {
+            date: 16,
+            calorie: 4300,
+        },
+        {
+            date: 17,
+            calorie: 2100,
         },
     ];
+    const [calorieSum, setCalorieSum] = useState(42100);
 
-    const [calorieAverage, setCalorieAverage] = useState(0);
-    const [calorieSum, setCalorieSum] = useState(0);
+    const [calorieAverage, setCalorieAverage] = useState(2400);
     const [KUSAdata, setKUSAdata] = useState([]);
     const [tweetText, settweetText] = useState("");
     const [thisMonth, setthisMonth] = useState("");
-
-    const generateKUSAArray = async () => {
-        const datetime = new Date();
-        datetime.setDate(1);
-        const dateIndex = datetime.getDay();
-        let testKUSAdata = [];
-
-        for (let i: number; i < Number(dateIndex); i++) {
-            console.log("=============");
-            testKUSAdata.push({
-                date: 0,
-                calorie: -1,
-            });
-        }
-        console.log(testKUSAdata);
-        testKUSAdata.concat(initialKUSA);
-        await setKUSAdata(testKUSAdata);
-    };
-
-    const setKUSA = async () => {
-        // await setKUSAdata(generateKUSAArray());
-        const datetime = new Date();
-        datetime.setDate(1);
-        setthisMonth((datetime.getMonth() + 1).toString());
-
-        const dateIndex = datetime.getDay();
-        const testKUSAdata = {
-            date: 0,
-            calorie: -1,
-        };
-        for (let i: number; i < dateIndex; i++) {
-            initialKUSA.unshift(testKUSAdata);
-        }
-        setKUSAdata(initialKUSA);
-        let caloriteTextString = "";
-        KUSAdata.forEach((data, index) => {
+    const [caloKUSAText, setcaloKUSAText] = useState("");
+    const generateTweetText = async () => {
+        let caloryTextString = "";
+        await KUSAdata.forEach((data, index) => {
             if (index % 7 === 0) {
-                caloriteTextString += "%0D%0A";
+                caloryTextString += "%0D%0A";
             }
 
-            caloriteTextString +=
+            caloryTextString +=
                 data.date == -1
                     ? "      "
                     : data.date == 0
@@ -118,9 +106,14 @@ export default function CalorieOfThisMonth() {
                     ? "🟨"
                     : "🟩";
         });
+        console.log(caloryTextString);
+        await setcaloKUSAText(caloryTextString);
+    };
+    const generateTweet = async () => {
+        console.log(caloKUSAText);
         settweetText(
             "https://twitter.com/share?text=" +
-                caloriteTextString +
+                caloKUSAText +
                 "%0D%0A" +
                 "平均１日摂取カロリー:" +
                 calorieAverage +
@@ -131,8 +124,8 @@ export default function CalorieOfThisMonth() {
                 "cal" +
                 "%0D%0A"
         );
+        console.log(tweetText);
     };
-    const [testKusadata, setTestKusadata] = useState([]);
     const test = async () => {
         const datetime = new Date();
         datetime.setDate(1);
@@ -147,43 +140,15 @@ export default function CalorieOfThisMonth() {
             initialKUSA.unshift(testKUSAdata);
         }
         await setKUSAdata(initialKUSA);
-        console.log(initialKUSA);
-        let caloriteTextString = "";
-        KUSAdata.forEach((data, index) => {
-            if (index % 7 === 0) {
-                caloriteTextString += "%0D%0A";
-            }
-
-            caloriteTextString +=
-                data.date == -1
-                    ? "      "
-                    : data.date == 0
-                    ? "⬜️"
-                    : data.date > calorieAverage + calorieAverage / 3
-                    ? "🟥"
-                    : data.date > calorieAverage
-                    ? "🟧"
-                    : data.date > calorieAverage - calorieAverage / 3
-                    ? "🟨"
-                    : "🟩";
-        });
-        settweetText(
-            "https://twitter.com/share?text=" +
-                caloriteTextString +
-                "%0D%0A" +
-                "平均１日摂取カロリー:" +
-                calorieAverage +
-                "cal" +
-                "%0D%0A" +
-                "合計摂取カロリー:" +
-                calorieSum +
-                "cal" +
-                "%0D%0A"
-        );
+        await generateTweetText();
+        await generateTweet();
     };
     useEffect(() => {
+        generateTweet();
+    }, [caloKUSAText]);
+    useEffect(() => {
         test();
-    }, []);
+    }, [tweetText]);
     // setKUSA();
 
     const BaseURL = "";

@@ -1,5 +1,4 @@
 import { signIn, useSession } from "next-auth/react";
-import Image from "next/image";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import Modal from "react-modal";
@@ -50,11 +49,6 @@ export default function TopPage() {
     // } else {
     return (
         <div className="flex flex-col h-screen">
-            <Image
-                src="/white-brick-wall.jpg"
-                className="-z-10"
-                layout="fill"
-            ></Image>
             <div className="flex z-0 flex-col h-screen">
                 <Header></Header>
                 <Modal

@@ -6,7 +6,7 @@ export default function Header() {
     const pathBool = router.pathname != "/";
     // const pathBool = true;
     const calorieOfToday = 50;
-    const goalUserCalories = 100;
+    const goalUserCalories = 2000;
     const { data: session } = useSession();
     console.log(session);
     return (

@@ -1,37 +1,100 @@
 import { useState } from "react";
+
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 type mealType = {
     mealName: string;
     mealCalorie: number;
+    mealPerCalorie: number;
+    mealNumber: number;
 };
 export default function inputCalorie() {
+    const calorieTable = {
+        りんご: 71,
+        みかん: 32,
+        ぶどう: 30,
+    };
     const [meals, setMeals] = useState("");
     const initialMeals = [];
+
+    // const [mealCalorie, setMealCalorie] = useState();
+
     const [detectMeals, setDetectMeals] = useState<mealType[]>(initialMeals);
     const handleMealsChange = (event) => {
         setMeals(event.target.value);
         console.log(event.target.value);
     };
+    const [sumCalorie, setSumCalorie] = useState(0);
     const removeMeal = (index: number) => {
         const newMeals = [...detectMeals];
+        const newMeal = newMeals[index];
         newMeals.splice(index, 1);
+        setSumCalorie(
+            sumCalorie - newMeal["mealPerCalorie"] * newMeal["mealNumber"]
+        );
         setDetectMeals(newMeals);
     };
-    const registMealToDatabase = (event) => {
-        // 入力した食事の内容をバックエンドに送信
+    const registMealToDatabase = () => {
+        setDetectMeals([]);
+        console.log("======================");
+        // setSumCalorie
     };
-    const setDetectCaloriesOfMeals = (event) => {
+    const BaseURL = "";
+    const upIndex = (index: number) => {
+        const newDetectMeals = [...detectMeals];
+        const newMeals = newDetectMeals[index];
+        newMeals.mealNumber += 1;
+        newMeals.mealCalorie += newMeals.mealPerCalorie;
+        newDetectMeals.splice(index, 1, newMeals);
+        setSumCalorie(sumCalorie + newMeals.mealPerCalorie);
+
+        setDetectMeals(newDetectMeals);
+        console.log(detectMeals);
+    };
+    const downIndex = (index: number) => {
+        const newDetectMeals = [...detectMeals];
+        const newMeals = newDetectMeals[index];
+        if (newMeals.mealNumber > 1) {
+            newMeals.mealNumber -= 1;
+            newMeals.mealCalorie -= newMeals.mealPerCalorie;
+            setSumCalorie(sumCalorie - newMeals.mealPerCalorie);
+        }
+
+        newDetectMeals.splice(index, 1, newMeals);
+        setDetectMeals(newDetectMeals);
+
+        console.log(detectMeals);
+    };
+    const goalUserCalories = 2000;
+    const setDetectCaloriesOfMeals = async (event) => {
         event.preventDefault();
 
         if (meals === "") {
             return;
         }
-        const calorie = 100;
-        setDetectMeals((detectMeals) => [
+        let mealCalorie = calorieTable[meals];
+        // await axios
+        //     .post<[]>(BaseURL + "sighin", {
+        //         food: meals,
+        //     })
+        //     .then((res: AxiosResponse) => {
+        //         console.log(res.data);
+        //         setMealCalorie(res.data.calorie);
+        //     })
+        //     .catch((error) => {
+        //         console.log(error);
+        //     });
+        await setDetectMeals((detectMeals) => [
             ...detectMeals,
-            { mealName: meals, mealCalorie: calorie },
+            {
+                mealName: meals,
+                mealPerCalorie: mealCalorie,
+                mealCalorie: mealCalorie,
+                mealNumber: 1,
+            },
         ]);
+        setSumCalorie(sumCalorie + mealCalorie);
+
         setMeals("");
         console.log(detectMeals);
     };
@@ -40,7 +103,40 @@ export default function inputCalorie() {
             <Header></Header>
             <div className="flex-grow">
                 <form onSubmit={setDetectCaloriesOfMeals}>
-                    <div className="flex mt-12">
+                    <div className="mt-12">
+                        <div className="inline text-xl">
+                            今日の摂取カロリー:
+                        </div>
+                        <div
+                            className={
+                                "text-4xl mt-12 inline " +
+                                (goalUserCalories * 1.4 < sumCalorie
+                                    ? " text-red-700"
+                                    : goalUserCalories * 1.3 < sumCalorie
+                                    ? "text-red-600"
+                                    : goalUserCalories * 1.2 < sumCalorie
+                                    ? "text-red-500"
+                                    : goalUserCalories * 1.1 < sumCalorie
+                                    ? "text-green-400"
+                                    : goalUserCalories < sumCalorie
+                                    ? " text-blue-600"
+                                    : goalUserCalories * 0.9 < sumCalorie
+                                    ? "text-green-400"
+                                    : goalUserCalories * 0.8 < sumCalorie
+                                    ? "text-red-400"
+                                    : goalUserCalories * 0.7 < sumCalorie
+                                    ? "text-red-300"
+                                    : goalUserCalories * 0.6 < sumCalorie
+                                    ? "text-red-200"
+                                    : "text-red-100")
+                            }
+                        >
+                            {sumCalorie}
+                        </div>
+                        <div className="inline text-2xl">kcal</div>
+                    </div>
+
+                    <div className="flex mt-2">
                         <div>
                             <div className="inline">今日は</div>
                             <input
@@ -54,8 +150,9 @@ export default function inputCalorie() {
 
                         <div className="flex justify-center">
                             <button
+                                type="button"
                                 className="border-2 ml-12 border-orange-300 rounded-full px-2 bg-gradient-to-t from-orange-200"
-                                onClick={() => registMealToDatabase}
+                                onClick={() => registMealToDatabase()}
                             >
                                 日記をつける
                             </button>
@@ -67,7 +164,7 @@ export default function inputCalorie() {
                 </div>
                 <ul>
                     {detectMeals.map((detectMeal, index) => (
-                        <button
+                        <div
                             key={index}
                             className=" border-2 ml-4 p-1 rounded-2xl inline-block w-auto border-orange-200 mx-auto mt-2  border-full bg-gradient-to-b from-pink-300"
                         >
@@ -80,11 +177,26 @@ export default function inputCalorie() {
                             <div className="inline ml-2">
                                 {detectMeal.mealName}
                             </div>
+                            <div className="inline ml-2">
+                                ×{detectMeal.mealNumber}
+                            </div>
+                            <button
+                                onClick={() => upIndex(index)}
+                                className=" ml-4 -mt-4 inline bg-slate-600 rounded-full  w-7 h-7 text-white border-2 border-t-2 border-slay-300"
+                            >
+                                +
+                            </button>
 
-                            <div className="inline ml-4">
+                            <div className="inline">
                                 {detectMeal.mealCalorie}kcal
                             </div>
-                        </button>
+                            <button
+                                onClick={() => downIndex(index)}
+                                className=" inline bg-slate-600 rounded-full  w-7 h-7 text-white border-2 border-t-2 border-slay-300"
+                            >
+                                -
+                            </button>
+                        </div>
                     ))}
                 </ul>
             </div>

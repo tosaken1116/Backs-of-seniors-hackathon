@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useState } from "react";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
@@ -66,6 +67,19 @@ export default function Ranking() {
             differenceCalorie: 200,
         },
     ];
+    const baseURL = "http://127.0.0.1:8000/";
+
+    const getRanking = () => {
+        axios
+            .get<[]>(baseURL + "getCalorieRanking", {})
+            .then((res) => {
+                console.log(res.data);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    };
+    getRanking();
     return (
         <div className="flex flex-col h-screen">
             <Header></Header>
@@ -103,7 +117,10 @@ export default function Ranking() {
                 >
                     <ul className="justify-center mx-auto w-64 pt-6">
                         {userDatas.map((user, index) => (
-                            <div className="text-2xl border-2 border-yellow-600 my-3 inline-block rounded-2xl bg-yellow-100 text-yellow-600 text-center font-semibold">
+                            <div
+                                key={index}
+                                className="text-2xl border-2 border-yellow-600 my-3 inline-block rounded-2xl bg-yellow-100 text-yellow-600 text-center font-semibold"
+                            >
                                 <div className="text-white box-decoration-clone rounded-t-xl bg-gradient-to-r from-pink-500 to-yellow-500 px-2">
                                     {index + 1}
                                 </div>

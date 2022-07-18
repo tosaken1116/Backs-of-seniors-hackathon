@@ -8,36 +8,36 @@ type mealType = {
     mealPerCalorie: number;
     mealNumber: number;
 };
-export default function inputCalorie() {
+export default function useIputCalorie() {
     const calorieTable = {
         りんご: 71,
         みかん: 32,
         ぶどう: 30,
     };
-    const [meals, setMeals] = useState("");
+    const [meals, SetMeals] = useState("");
     const initialMeals = [];
 
     // const [mealCalorie, setMealCalorie] = useState();
 
-    const [detectMeals, setDetectMeals] = useState<mealType[]>(initialMeals);
+    const [detectMeals, SetDetectMeals] = useState<mealType[]>(initialMeals);
     const handleMealsChange = (event) => {
-        setMeals(event.target.value);
+        SetMeals(event.target.value);
         console.log(event.target.value);
     };
-    const [sumCalorie, setSumCalorie] = useState(0);
+    const [sumCalorie, SetSumCalorie] = useState(0);
     const removeMeal = (index: number) => {
         const newMeals = [...detectMeals];
         const newMeal = newMeals[index];
         newMeals.splice(index, 1);
-        setSumCalorie(
+        SetSumCalorie(
             sumCalorie - newMeal["mealPerCalorie"] * newMeal["mealNumber"]
         );
-        setDetectMeals(newMeals);
+        SetDetectMeals(newMeals);
     };
     const registMealToDatabase = () => {
-        setDetectMeals([]);
+        SetDetectMeals([]);
         console.log("======================");
-        // setSumCalorie
+        // SetSumCalorie
     };
     const BaseURL = "";
     const upIndex = (index: number) => {
@@ -46,9 +46,9 @@ export default function inputCalorie() {
         newMeals.mealNumber += 1;
         newMeals.mealCalorie += newMeals.mealPerCalorie;
         newDetectMeals.splice(index, 1, newMeals);
-        setSumCalorie(sumCalorie + newMeals.mealPerCalorie);
+        SetSumCalorie(sumCalorie + newMeals.mealPerCalorie);
 
-        setDetectMeals(newDetectMeals);
+        SetDetectMeals(newDetectMeals);
         console.log(detectMeals);
     };
     const downIndex = (index: number) => {
@@ -57,11 +57,11 @@ export default function inputCalorie() {
         if (newMeals.mealNumber > 1) {
             newMeals.mealNumber -= 1;
             newMeals.mealCalorie -= newMeals.mealPerCalorie;
-            setSumCalorie(sumCalorie - newMeals.mealPerCalorie);
+            SetSumCalorie(sumCalorie - newMeals.mealPerCalorie);
         }
 
         newDetectMeals.splice(index, 1, newMeals);
-        setDetectMeals(newDetectMeals);
+        SetDetectMeals(newDetectMeals);
 
         console.log(detectMeals);
     };
@@ -84,7 +84,7 @@ export default function inputCalorie() {
         //     .catch((error) => {
         //         console.log(error);
         //     });
-        await setDetectMeals((detectMeals) => [
+        await SetDetectMeals((detectMeals) => [
             ...detectMeals,
             {
                 mealName: meals,
@@ -93,9 +93,9 @@ export default function inputCalorie() {
                 mealNumber: 1,
             },
         ]);
-        setSumCalorie(sumCalorie + mealCalorie);
+        SetSumCalorie(sumCalorie + mealCalorie);
 
-        setMeals("");
+        SetMeals("");
         console.log(detectMeals);
     };
     return (

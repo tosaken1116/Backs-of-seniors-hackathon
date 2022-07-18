@@ -148,6 +148,38 @@ export default function CalorieOfThisMonth() {
         }
         await setKUSAdata(initialKUSA);
         console.log(initialKUSA);
+        let caloriteTextString = "";
+        KUSAdata.forEach((data, index) => {
+            if (index % 7 === 0) {
+                caloriteTextString += "%0D%0A";
+            }
+
+            caloriteTextString +=
+                data.date == -1
+                    ? "      "
+                    : data.date == 0
+                    ? "⬜️"
+                    : data.date > calorieAverage + calorieAverage / 3
+                    ? "🟥"
+                    : data.date > calorieAverage
+                    ? "🟧"
+                    : data.date > calorieAverage - calorieAverage / 3
+                    ? "🟨"
+                    : "🟩";
+        });
+        settweetText(
+            "https://twitter.com/share?text=" +
+                caloriteTextString +
+                "%0D%0A" +
+                "平均１日摂取カロリー:" +
+                calorieAverage +
+                "cal" +
+                "%0D%0A" +
+                "合計摂取カロリー:" +
+                calorieSum +
+                "cal" +
+                "%0D%0A"
+        );
     };
     useEffect(() => {
         test();

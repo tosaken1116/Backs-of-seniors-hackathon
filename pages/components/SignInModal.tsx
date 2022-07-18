@@ -1,19 +1,43 @@
+import axios, { AxiosResponse } from "axios";
+import { useRouter } from "next/router";
 import { useState } from "react";
+
 export default function SignInModal() {
     type loginElement = {
         username: string;
         email: string;
         password: string;
     };
+    const BaseURL = "";
+    const router = useRouter();
+
     let initialValues = { username: "", email: "", password: "" };
     const [formValues, setFormValues] = useState<loginElement>(initialValues);
-    const handleChange = (event) => {
+    const signIn = async () => {
+        await axios
+            .post<[]>(BaseURL + "sighin", {
+                email: formValues.email,
+                password: formValues.password,
+            })
+            .then((res: AxiosResponse) => {
+                console.log(res.data);
+                router.replace("/inputCalorie");
+            })
+            .catch((error) => {
+                console.log(error);
+                router.replace("/inputCalorie");
+            });
+    };
+    const handleChange = async (event) => {
         // console.log(event.target);
         const { name, value } = event.target;
-        setFormValues({ ...formValues, [name]: value });
+        await setFormValues({ ...formValues, [name]: value });
+    };
+    const changePath = () => {
+        router.push("/inputCalorie");
     };
     return (
-        <p className="text-center ">
+        <div className="text-center ">
             <div>
                 <div className="mt-32">
                     <div>
@@ -53,7 +77,10 @@ export default function SignInModal() {
                                         />
                                     </div>
                                     <div className="m-3">
-                                        <button className="px-2 py-1 bg-green-400 text-xl text-white font-semibold rounded hover:bg-green-500">
+                                        <button
+                                            onClick={() => changePath}
+                                            className="px-2 py-1 bg-green-400 text-xl text-white font-semibold rounded hover:bg-green-500"
+                                        >
                                             Sign Up!
                                         </button>
                                     </div>
@@ -63,6 +90,6 @@ export default function SignInModal() {
                     </div>
                 </div>
             </div>
-        </p>
+        </div>
     );
 }

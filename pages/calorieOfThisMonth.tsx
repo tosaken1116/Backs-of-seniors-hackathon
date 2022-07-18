@@ -1,3 +1,4 @@
+import axios from "axios";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import CalorieOfKUSA from "./components/calorieKUSA";
@@ -59,70 +60,120 @@ export default function CalorieOfThisMonth() {
         },
     ];
 
-    const calorieAverage = 100;
-    const calorieSum = 20000;
-
-    const datetime = new Date();
+    const [calorieAverage, setCalorieAverage] = useState(0);
+    const [calorieSum, setCalorieSum] = useState(0);
     const [KUSAdata, setKUSAdata] = useState([]);
+    const [tweetText, settweetText] = useState("");
+    const [thisMonth, setthisMonth] = useState("");
 
-    const generateKUSAArray = () => {
+    const generateKUSAArray = async () => {
+        const datetime = new Date();
         datetime.setDate(1);
         const dateIndex = datetime.getDay();
         let testKUSAdata = [];
 
-        for (let i: number; i < dateIndex; i++) {
+        for (let i: number; i < Number(dateIndex); i++) {
+            console.log("=============");
             testKUSAdata.push({
                 date: 0,
                 calorie: -1,
             });
-            console.log("======");
         }
-        testKUSAdata.concat(initialKUSA);
         console.log(testKUSAdata);
-        return testKUSAdata;
+        testKUSAdata.concat(initialKUSA);
+        await setKUSAdata(testKUSAdata);
     };
 
-    useEffect(() => {
-        setKUSAdata(generateKUSAArray()), [];
-    });
-    const thisMonth = datetime.getMonth() + 1;
-    let caloriteTextString = "";
-    KUSAdata.forEach((data, index) => {
-        if (index % 7 === 0) {
-            caloriteTextString += "%0D%0A";
-        }
+    const setKUSA = async () => {
+        // await setKUSAdata(generateKUSAArray());
+        const datetime = new Date();
+        datetime.setDate(1);
+        setthisMonth((datetime.getMonth() + 1).toString());
 
-        caloriteTextString +=
-            data.date == -1
-                ? "      "
-                : data.date == 0
-                ? "⬜️"
-                : data.date > calorieAverage + calorieAverage / 3
-                ? "🟥"
-                : data.date > calorieAverage
-                ? "🟧"
-                : data.date > calorieAverage - calorieAverage / 3
-                ? "🟨"
-                : "🟩";
-    });
-    const tweetText =
-        "https://twitter.com/share?text=" +
-        caloriteTextString +
-        "%0D%0A" +
-        "平均１日摂取カロリー:" +
-        calorieAverage +
-        "cal" +
-        "%0D%0A" +
-        "合計摂取カロリー:" +
-        calorieSum +
-        "cal" +
-        "%0D%0A";
+        const dateIndex = datetime.getDay();
+        const testKUSAdata = {
+            date: 0,
+            calorie: -1,
+        };
+        for (let i: number; i < dateIndex; i++) {
+            initialKUSA.unshift(testKUSAdata);
+        }
+        setKUSAdata(initialKUSA);
+        let caloriteTextString = "";
+        KUSAdata.forEach((data, index) => {
+            if (index % 7 === 0) {
+                caloriteTextString += "%0D%0A";
+            }
+
+            caloriteTextString +=
+                data.date == -1
+                    ? "      "
+                    : data.date == 0
+                    ? "⬜️"
+                    : data.date > calorieAverage + calorieAverage / 3
+                    ? "🟥"
+                    : data.date > calorieAverage
+                    ? "🟧"
+                    : data.date > calorieAverage - calorieAverage / 3
+                    ? "🟨"
+                    : "🟩";
+        });
+        settweetText(
+            "https://twitter.com/share?text=" +
+                caloriteTextString +
+                "%0D%0A" +
+                "平均１日摂取カロリー:" +
+                calorieAverage +
+                "cal" +
+                "%0D%0A" +
+                "合計摂取カロリー:" +
+                calorieSum +
+                "cal" +
+                "%0D%0A"
+        );
+    };
+    const [testKusadata, setTestKusadata] = useState([]);
+    const test = async () => {
+        const datetime = new Date();
+        datetime.setDate(1);
+        setthisMonth((datetime.getMonth() + 1).toString());
+        const dateIndex = Number(datetime.getDay());
+        const testKUSAdata = {
+            calorie: -1,
+            date: 0,
+        };
+
+        for (let i = 0; i < dateIndex; i++) {
+            initialKUSA.unshift(testKUSAdata);
+        }
+        await setKUSAdata(initialKUSA);
+        console.log(initialKUSA);
+    };
+    useEffect(() => {
+        test();
+    }, []);
+    // setKUSA();
+
+    const BaseURL = "";
     const openTwitter = () => {
         window.open(
             tweetText,
             "twitter",
             "top=200,left=300,width=600,height=400"
         );
+    };
+    const getcalorieOfThisMonth = () => {
+        axios
+            .get<[]>(BaseURL)
+            .then((res) => {
+                setKUSAdata(res.data["detailOfDate"]);
+                setCalorieAverage(res.data["calorieAverage"]);
+                setCalorieSum(res.data["calorieSum"]);
+                console.log(res);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
     };
     type rankingUser = {
         userName: string;
@@ -131,6 +182,7 @@ export default function CalorieOfThisMonth() {
     type ranking = {
         users: rankingUser[];
     };
+    // getcalorieOfThisMonth();
     return (
         <div className="flex flex-col h-screen">
             <Header></Header>

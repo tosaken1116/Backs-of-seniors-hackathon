@@ -200,18 +200,25 @@ export default function CalorieOfThisMonth() {
                         ></CalorieOfKUSA>
                     ))}
                 </div>
-                <div className=" justify-center mx-auto w-72 mt-12">
-                    <div>平均１日摂取カロリー:{calorieAverage}cal</div>
-                    <div>
-                        <div>合計摂取カロリー:{calorieSum}cal</div>
-                        <Link
-                            href={tweetText}
-                            className="twitter-share-button"
-                            rel="nofollow noopener noreferrer"
-                            target="_blank"
+                <div className="box-border h-auto p-2 w-80 border-2 box-decoration-slice bg-amber-100 border-amber-200 mb-1 mx-auto">
+                    <div className="index-0 text-center justify-center mx-auto ">
+                        <div className="underline underline-offset-4 decoration-dashed decoration-green-300">
+                            <div>平均１日摂取カロリー:{calorieAverage}cal</div>
+                            <div>合計摂取カロリー:{calorieSum}cal</div>
+                        </div>
+                        <div
+                            className="box-border py-1 px-auto mx-auto mt-2 w-40 border-2 border-orange-600 bg-orange-500 rounded-2xl
+                        hover:bg-orange-600 hover:border-orange-700 active:orange-700 focus:outline-none focus:ring focus:ring-orange-300 text-white"
                         >
-                            Tweet
-                        </Link>
+                            <Link
+                                href={tweetText}
+                                className="twitter-share-button"
+                                rel="nofollow noopener noreferrer"
+                                target="_blank"
+                            >
+                                みんなに知らせる
+                            </Link>
+                        </div>
                         <script
                             async
                             src="https://platform.twitter.com/widgets.js"
